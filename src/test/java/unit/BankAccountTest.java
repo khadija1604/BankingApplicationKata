@@ -1,6 +1,5 @@
 package unit;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -10,22 +9,28 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import domain.Account;
+import domain.IAccount;
 import domain.Operation;
 import domain.OperationsPrinter;
 import repository.OperationRepository;
-
 public class BankAccountTest {
 	
-    private Account account;
-	
-	private OperationRepository operationRepository=mock(OperationRepository.class);
+    private IAccount account;
+    
+	@Mock
+	private OperationRepository operationRepository;
 
-	private OperationsPrinter operationsPrinter = mock(OperationsPrinter.class);;
+    @Mock
+	private OperationsPrinter operationsPrinter ;
+
 	
 	@BeforeEach
 	void init() {
+		MockitoAnnotations.initMocks(this);
 		account = new Account(operationRepository,operationsPrinter);
 	}
 	

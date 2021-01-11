@@ -1,7 +1,6 @@
 package unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
@@ -9,19 +8,26 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import domain.Operation;
+import repository.IOperationRepository;
 import repository.OperationRepository;
 import utils.DateGenerator;
 import utils.OperationTypes;
 
 public class OperationRepositoryTest {
     private  static final String OPERATION_DATE= "08/01/2021";
-	private  OperationRepository operationRepository;
-	private DateGenerator dateGenerator = mock(DateGenerator.class);
+    
+	private  IOperationRepository operationRepository;
+	
+	@Mock
+	private DateGenerator dateGenerator ;
 	
 	@BeforeEach
 	void init() {
+		MockitoAnnotations.initMocks(this);
 		operationRepository= new OperationRepository(dateGenerator);
 	}
 	

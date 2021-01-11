@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OperationsPrinter {
+public class OperationsPrinter implements IOperationsPrinter {
 	
 	private ConsolePrinter consolePrinter;
 	private static final String HEADER = "Operation, Date, Amount, Balance";
@@ -18,6 +18,7 @@ public class OperationsPrinter {
 
 
 
+	@Override
 	public void printOperations(List<Operation> operations) {
       consolePrinter.printTransaction(HEADER);
       printLines(operations);

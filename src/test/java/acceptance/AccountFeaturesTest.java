@@ -11,12 +11,15 @@ import org.mockito.Mockito;
 
 import domain.Account;
 import domain.ConsolePrinter;
+import domain.IAccount;
+import domain.IOperationsPrinter;
 import domain.OperationsPrinter;
+import repository.IOperationRepository;
 import repository.OperationRepository;
 import utils.DateGenerator;
 
 public class AccountFeaturesTest {
-	private Account account;
+	private IAccount account;
 	
 	
 	private ConsolePrinter consolePrinter = mock(ConsolePrinter.class);
@@ -24,8 +27,8 @@ public class AccountFeaturesTest {
 
 	@BeforeEach
 	void init() {
-		OperationRepository operationRepository= new OperationRepository(dateGenerator);
-		OperationsPrinter operationsPrinter = new OperationsPrinter(consolePrinter);
+		IOperationRepository operationRepository= new OperationRepository(dateGenerator);
+		IOperationsPrinter operationsPrinter = new OperationsPrinter(consolePrinter);
 		account = new Account(operationRepository,operationsPrinter);
 	}
 	
